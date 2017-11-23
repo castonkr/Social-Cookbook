@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>College Cookbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/addRecipe.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div class="credentials">
+        <a href="../login.html">Logout</a>
+    </div>
+
+    <h1 id="cookbookTitle">College Cookbook</h1>
+
+    <div class="menuWrapper">
+        <div id="find" class="menu-option">Find Recipes</div>
+        <div id="add" class="menu-option">Add Recipes</div>
+        <div id="favorite" class="menu-option">My Recipes</div>
+        <div id="account" class="menu-option">My Account</div>
+        <div class="addInfoWrapper">
+            <h3>Add Recipe</h3>
+            <div class="recipes" id="recipe-form">
+                <form name="new-recipe">
+                    <label for="recipeName">Name of Recipe</label>
+                    <input type="text" name="recipeName" placeholder="Pancakes">
+                    <div class="clear"></div>
+
+                    <label for="typeOfMeal">Type of Meal</label>
+                    <select name="typeOfMeal">
+                        <option selected="breakfast" value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="snack">Snack</option>
+                    </select>
+                    <div class="clear"></div>
+
+                    <label for="prepTime">Prep Time</label>
+                    <input type="text" name="prepTime" placeholder="5 minutes">
+                    <div class="clear"></div>
+
+                    <label for="cookTime">Cook Time</label>
+                    <input type="text" name="cookTime" placeholder="10 minutes">
+                    <div class="clear"></div>
+
+                    <label for="servingSize">Serving Size</label>
+                    <input type="text" name="servingSize" placeholder="2">
+                    <div class="clear"></div>
+
+                    <label for="cost">Cost</label>
+                    <input type="text" name="cost" placeholder="$10.00">
+                    <div class="clear"></div>
+
+                    <label for="cost">Image Url</label>
+                    <input type="text" name="imageurl" placeholder="http://ghk.h-cdn.co/assets/16/38/980x490/landscape-1474822198-how-to-make-pancakes.jpg">
+                    <div class="clear"></div>
+
+                    <button id="addImage" type="submit">Upload Picture</button>
+                    
+
+
+                    
+                    <div class="clear"></div>
+                </form>
+            </div>
+
+
+
+        </div>
+        <div class="ingredientWrapper">
+
+            <form>
+                Ingredients
+                <input type="text" id="ingredientNameInput">
+                <button id="addIngredient" type="submit">Add Ingredient</button>
+                
+                <br>
+            </form>
+            <div id="listOfIngredients">
+                <ul id="ingredientsList">
+
+                </ul>
+            </div>
+           
+
+
+        </div>
+        <div class="directionsWrapper">
+            <form>
+                Directions
+                <input type="text" id="directionsInput">
+                <button id="addDirection" type="submit">Add Step</button>
+                <br>
+            </form>
+            <div id="listOfDirections">
+                <ol id="directionsList">
+
+                </ol>
+            </div>
+        </div>
+
+        <div class="addRecipeWrapper">
+            <h3 id="nameOfRecipe"></h3>
+            <h4 id="nameOfAuther"></h4>
+            <form>
+                    <div class="recipeImg">
+                            <img id="recipeImage">
+                        </div>
+        <button id="add-recipe-button" type="submit"> Add Recipe </button>
+    </form>
+           </div>
+    </div>
+
+	
+
+
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script src="../js/addRecipe.js"> </script>
+
+</body>
+
+</html>

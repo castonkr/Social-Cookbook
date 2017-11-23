@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>College Cookbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/findRecipe.css" rel="stylesheet">
+    <script src="../js/findRecipe.js"> 
+    </script>
+</head>
+
+<body>
+
+    <div class="credentials">
+        <!-- <a href="account.html">My Account</a> -->
+        <a href="../login.html">Logout</a>
+    </div>
+
+    <h1 id="cookbookTitle">College Cookbook</h1>
+
+    <div class="menuWrapper">
+        <div id="find" class="menu-option">Find Recipes</div>
+        <div id="add" class="menu-option">Add Recipes</div>
+        <div id="favorite" class="menu-option">My Recipes</div>
+        <div id="account" class="menu-option">My Account</div>
+    </div>
+
+    <div class="SearchWrapper">
+        <div class="recipes" id="recipe-form">
+            <form name="new-recipe">
+                <label for="recipeName">Name of Recipe</label>
+                <input type="text" name="recipeName" placeholder="Pancakes">
+                <div class="clear"></div>
+
+                <label for="typeOfMeal">Type of Meal</label>
+                <select name="typeOfMeal">
+                        <option selected="none" value="none"> </option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snack">Snack</option>
+                </select>
+                <div class="clear"></div>
+
+                <label for="prepTime">Prep Time</label>
+                <input type="text" name="prepTime" placeholder="5 minutes">
+                <div class="clear"></div>
+
+                <label for="cookTime">Cook Time</label>
+                <input type="text" name="cookTime" placeholder="10 minutes">
+                <div class="clear"></div>
+
+                <label for="servingSize">Serving Size</label>
+                <input type="text" name="servingSize" placeholder="2">
+                <div class="clear"></div>
+
+                <label for="cost">Cost</label>
+                <input type="text" name="cost" placeholder="$10.00">
+                <div class="clear"></div>
+
+                <button id="search-button" type="submit"> Find Recipe </button>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="FindRecipeWrapper">
+            <h3>List of Recipes</h3>
+                    <div id="listOfFoundRecipes">
+                            <ul id="FoundRecipeList">
+                                
+                            </ul>
+                        </div>
+                        <!-- <button id="addFavoriteRecipe">Add Recipe</button> -->
+        </div>
+
+    
+
+
+
+
+        <script src="../js/jquery-3.1.1.js"></script>
+        <script src="../js/findRecipe.js"> </script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+* {
+    background-color: #E3EEF3;
+}
+
+.menuWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    text-align: center;
+    grid-auto-rows: minmax(auto);
+  }
+
+  #find {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #add { 
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #favorite {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  #grocery {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .menu-option {
+    background-color: #74B7D4;
+    vertical-align: center;
+    padding: 10px;
+
+  }
+
+  .menu-option:hover {
+      background-color: #046A95;
+  }
+
+  .recipeWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    text-align: left;
+  }
+
+  #recipe-title {
+    /* grid-row: 1; */
+  }
+
+  .pastaImage img {
+      max-width: 100%;
+      /* grid-row: 2; */
+  }
+
+  .recipe-start {
+      /* grid-row: 3; */
+  }
+
+.directionsGrid {
+    grid-column: 1;
+}
+
+  .ingredientsWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    text-align: center;
+  }
+
+  #ingredients-title {
+      /* grid-row: 3; */
+  }
+
+  .ingredients-list {
+      text-align: left;
+      /* grid-row: 16; */
+  }
+
+  .directionsGrid {
+      grid-column: 3/5;
+  }
+
+  .directionsWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    text-align: center;
+  }
+
+  .directions-list {
+    border: 1px solid #046A95;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #directions-title {
+  }
+
+  .directions-list {
+      text-align: left;
+      /* grid-row: 3; */
+  }
+
+  h1 {
+      text-align: center;
+      background-color: #3EA1CB;
+      padding: 20px;
+  }
+
+  h2 {
+      text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+}
+
+  a {
+      text-align: right;
+  }
+
+  .credentials {
+      text-align: right;
+  }
+
+  .buttons {
+      text-align: right;
+  }

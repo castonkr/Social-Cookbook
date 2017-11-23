@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>College Cookbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/createUser.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div class="credentials">
+        <a href="../login.html">Back</a>
+    </div>
+
+    <h1 id="cookbookTitle">College Cookbook</h1>
+    <!-- name: String,
+    imageURL: String,
+    username: String,
+    password: String,
+    email: String,
+    bio: String, -->
+    <div class="SearchWrapper">
+            <div class="createUser" id="create-user-form">
+                <form name="new-user">
+
+                    <label for="name">name</label>
+                    <input type="text" name="name" placeholder="Joe Schmoe">
+                    <div class="clear"></div>
+
+                    <label for="addImage">Add an image</label>
+                    <input type="text" name="addImage" placeholder="http://">
+                    <div class="clear"></div>
+
+                    <label for="username">Username</label>
+                    <input type="text" name="Username" placeholder="joe1234">
+                    <div class="clear"></div>
+    
+                    <label for="password">Password</label>
+                    <input type="password" name="Password" placeholder="not your bank account number">
+                    <div class="clear"></div>
+    
+                    <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="joeschmoe@gmail.com">
+                    <div class="clear"></div>
+
+                    <label for="bio">Bio</label>
+                        <textarea id = "bio" rows="4" cols="50" placeholder="Write something about yourself"></textarea>
+                    <div class="clear"></div>
+    
+                    <button id="register-button" type="submit"> Register new user </button>
+                    <div class="clear"></div>
+                </form>
+            </div>
+        </div>
+
+	
+
+
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script src="../js/createUser.js"> </script>
+
+</body>
+
+</html>

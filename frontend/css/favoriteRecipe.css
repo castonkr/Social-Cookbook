@@ -1,0 +1,83 @@
+* {
+    background-color: #E3EEF3;
+}
+
+.menuWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    text-align: center;
+  }
+
+  #find {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #add { 
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #favorite {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  #grocery {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .menu-option {
+    background-color: #74B7D4;
+    vertical-align: center;
+    padding: 10px;
+  }
+
+  .menu-option:hover {
+    background-color: #046A95;
+}
+
+
+  h3 {
+      text-align: center;
+  }
+  
+  h1 {
+      text-align: center;
+      background-color: #3EA1CB;
+      padding: 20px;
+  }
+
+  a {
+      text-align: right;
+  }
+
+  .credentials {
+      text-align: right;
+  }
+
+  .addFavoriteRecipe{
+    position: absolute;
+    bottom: 0;
+  }
+
+  .FavoriteRecipeWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* grid-gap: 10px; */
+    /* grid-auto-rows: minmax(100px, auto); */
+    border: 1px solid #046A95;
+    /* background-color:  white; */
+    padding-left: 15px;
+    text-align: left;
+    /* width: 500px; */
+    height: 500px;
+    overflow:scroll;
+
+  }
+
+  div.listOfFavoriteRecipes {
+    background-color: #74B7D4;
+    /* width: 100px;
+    height: 100px; */
+    overflow: scroll;
+}

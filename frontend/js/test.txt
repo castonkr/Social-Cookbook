@@ -1,0 +1,35 @@
+{
+    "name": "Linde Schaffer",
+    "imageURL": "",
+    "username": "schaffll",
+    "password": "password",
+    "email": "schaffll@rose-hulman.edu",
+    "bio": "Fooooods",
+    "recipes": [
+        {
+            "name": "Pancakes",
+            "typeOfMeal": "Breakfast",
+            "imageURL": "https://images-gmi-pmc.edge-generalmills.com/2d3461e4-d102-4085-a64a-74db40c622c9.jpg",
+            "prepTime": "15 minutes",
+            "cookTime": "10 minutes",
+            "servingSize": "12 pancakes",
+            "cost": "$15",
+            "ingredients": [
+                "2 cups pancake mix",
+                "1 cup milk",
+                "2 eggs"
+            ],
+            "directions": [
+                {
+                    "step": "Heat griddle or skillet over medium-high heat or electric griddle to 375°F; grease with cooking spray, vegetable oil or shortening. (Surface is ready when a few drops of water sprinkled on it dance and disappear)."
+                },
+                {
+                    "step": "Stir all ingredients until blended. Pour by slightly less than 1/4 cupfuls onto hot griddle."
+                },
+                {
+                    "step": "Cook until edges are dry. Turn; cook until golden. Note: If you like thin pancakes, use 1 1/2 cups milk."
+                }
+            ]
+        }
+    ]
+}

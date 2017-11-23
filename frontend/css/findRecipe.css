@@ -1,0 +1,189 @@
+* {
+    background-color: #E3EEF3;
+}
+
+h3 {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    background-color: #3EA1CB;
+    padding: 20px;
+}
+
+a {
+    text-align: right;
+}
+
+.credentials {
+    text-align: right;
+}
+
+.menuWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    /* grid-auto-rows: minmax(100px, auto); */
+    text-align: center;
+  }
+
+  #find {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #add { 
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #favorite {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  #grocery {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .menu-option {
+    background-color: #74B7D4;
+    vertical-align: center;
+    padding: 10px;
+
+  }
+
+  .menu-option:hover {
+    background-color: #046A95;
+}
+
+
+  .SearchWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    /* grid-auto-rows: minmax(100px, auto); */
+    /* border: 1px solid #046A95; */
+    /* background-color:  white; */
+  }
+
+  .FindRecipeWrapper {
+    grid-column: 2/4;
+    /* display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    border: 1px solid #046A95; */
+  }
+  .suggestions {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #Keywords {
+      grid-column: 1;
+      grid-row: 2;
+  }
+  #Ingredients {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+#User {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+#Cooking-Utensils {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+.Dropdown-portion {
+    /* grid-column: 2/4; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+
+#Type_of_Meal {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#Cost {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+#Time_constraints {
+    grid-column: 1;
+    grid-row: 4;
+}
+#Search_Button {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+input[type=text] {
+    /* width: 130px; */
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    /* -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out; */
+}
+/* 
+input[type=text]:focus {
+    width: 100%;
+} */
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #74B7D4;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: rgb(15, 166, 231);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float:right;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #343a5a}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+  

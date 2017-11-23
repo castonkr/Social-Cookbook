@@ -1,0 +1,85 @@
+* {
+    background-color: #E3EEF3;
+}
+
+.menuWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    /* grid-auto-rows: minmax(100px, auto); */
+    text-align: center;
+  }
+
+  #find {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #add { 
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #favorite {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  #grocery {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .menu-option {
+    background-color: #74B7D4;
+    vertical-align: center;
+    padding: 10px;
+
+  }
+
+  .listWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    border: 1px solid #046A95;
+  }
+
+
+
+  h3 {
+      text-align: center;
+  }
+
+
+  h1 {
+      text-align: center;
+      background-color: #3EA1CB;
+      padding: 20px;
+  }
+
+  a {
+      text-align: right;
+  }
+
+  .credentials {
+      text-align: right;
+  }
+
+  .menu-option:hover {
+    background-color: #046A95;
+}
+
+#addList {
+    background-color: #74B7D4;
+    vertical-align: center;
+}
+
+#addList:hover{
+    background-color: #AFDAED;
+}
+
+button {
+    background-color: #74B7D4;
+    border: none;
+}
+
+button:hover{
+    background-color: #AFDAED;
+}
