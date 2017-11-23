@@ -3,8 +3,9 @@
     "use strict";
 
     // CONSTANTS
-    const apiUrl = "https://college-cookbook-api.herokuapp.com";
-    // const apiUrl = "http://localhost:3000";
+    // const apiUrl = "https://college-cookbook-api.herokuapp.com";
+    const apiUrl = "http://localhost:3000";
+    let userToken = null;
     let user = {};
     let rotw = {};
 
@@ -31,9 +32,9 @@
     }
 
     function loadUser() {
-        let userToStoreString, error = false;
+        let error = false;
         try {
-            userToStoreString = sessionStorage.getItem("userToStore");
+            userToken = sessionStorage.getItem("userToken");
         } catch (e) {
             alert("Error when reading from Session Storage " + e);
             error = true;
@@ -41,10 +42,10 @@
             return false;
         }
         if (!error) {
-            user._id = userToStoreString;
-            getUserById();
+            getUserByToken();
         }
     }
+
 
     function loadROTW() {
         let rotwToStoreString, error = false;
@@ -83,25 +84,26 @@
         });
     }
 
-    // function getROTWById() {
-    //     $.ajax({
-    //         url: apiUrl + "/rotws/" + rotw._id,
-    //         type: 'GET',
-    //         data: rotw,
-    //         dataType: 'JSON',
-    //         success: (data) => {
-    //             if (data) {
-    //                 rotw = data;
-    //                 displayROTW();
-    //             } else {
-    //                 console.log("ROTW not Found");
-    //             }
-    //         },
-    //         error: (request, status, error) => {
-    //             console.log(error, status, request);
-    //         }
-    //     });
-    // }
+    function getUserByToken() {
+        $.ajax({
+            url: apiUrl + "/auth/user",
+            headers: {'x-access-token': userToken},
+            type: 'GET',
+            data: user,
+            dataType: 'JSON',
+            success: (data) => {
+                if (data) {
+                    user = data;
+                    console.log(user);
+                } else {
+                    console.log("User not Found");
+                }
+            },
+            error: (request, status, error) => {
+                console.log(error, status, request);
+            }
+        });
+    }
 
     function displayROTW() {
         $('#rotwImage').attr('src', rotw.imageURL);

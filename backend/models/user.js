@@ -14,5 +14,17 @@ const recipeSchema = new mongoose.Schema({
     directions: [String]
 });
 
-const Rotw = mongoose.model('Rotw', recipeSchema);
-module.exports = Rotw;
+const userSchema = new mongoose.Schema({
+    name: String,
+    imageURL: String,
+    username: String,
+    password: String,
+    email: String,
+    bio: String,
+    recipes: [recipeSchema],
+    favoriteRecipes: [recipeSchema]
+});
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
+

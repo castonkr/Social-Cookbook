@@ -2,27 +2,33 @@
     "use strict";
 
     // CONSTANTS
-    const apiUrl = "https://college-cookbook-api.herokuapp.com";
-    // const apiUrl = "http://localhost:3000";
-    let AllUsers;
+    // const apiUrl = "https://college-cookbook-api.herokuapp.com";
+    const apiUrl = "http://localhost:3000";
+    let usernameInput, passwordInput;
 
-    // OTHER VARS
-
-    // called when the page first loads to create tiles and empty space 
     function setup() {
-        getUsers();
         getROTW();
         $("#login-button").click((e) => {
             e.preventDefault();
-            login();
+            login(getLoginInfo());
             return false;
-        });  
+        });
+
         $("#create-user-button").click((e) => {
             e.preventDefault();
             window.location = "html/create-user.html";
             return false;
-        }); 
+        });
     }
+
+    function getLoginInfo(){
+        const loginInfo = {
+            username:   $('[name="username"]').val(),
+            password:  $('[name="password"]').val()
+        };
+        return loginInfo;
+        
+       }
 
     function handleError(err, res, msg, statusCode) {
         res.status(statusCode);
@@ -31,69 +37,34 @@
         res.json({ message: err.status + ' ' + err });
     }
 
-    function login() {
-        console.log("in login...");
-        let thisUser;
-        let userFound = false;
-        const usernameInput = $('[name="username"]').val();
-        const passwordInput = $('[name="password"]').val();
-
-        console.log(AllUsers);
-
-        AllUsers.forEach((user) => {
-            if (user.username == usernameInput && user.password == passwordInput) {
-                userFound = true;
-                thisUser = user;
-                saveUserIDAndRedirect(thisUser);
-            }
-        });
-
-        // if(!userFound) {
-        //     alert("Incorrect username or password.");
-        // } else {
-        //     saveUserIdAndRedirect(thisUser);
-        // }
-    }
-
-    function saveUserIDAndRedirect(userToStore) {
-        let error = false;
-        try {
-            const userToStoreString = userToStore._id;
-            sessionStorage.setItem("userToStore", userToStoreString);
-            
-            
-        } catch (e) {
-            alert("Error when writing to Session Storage " + e);
-            error = true;
-        } 
-        if (!error) { 
-            console.log('redirect added user');
-            window.location = "html/index.html";
-        }
-    }
-
-
-
-    // function populate
-
-
-    function getUsers() {
+    function login(loginInfo) {
         $.ajax({
-            url: apiUrl + "/recipes",
-            type: 'GET',
+            url: apiUrl + "/auth/login",
+            type: 'POST',
+            data: loginInfo,
             dateType: 'JSON',
             success: (data) => {
-                if (data) {
-                    AllUsers = data;
-                    console.log(AllUsers);
-                } else {
-                    console.log("cannot get users");
+                if (data.auth){
+                    saveTokenAndRedirect(data.token);
                 }
             },
             error: (request, status, error) => {
                 console.log(error, status, request);
             }
         });
+    }
+
+    function saveTokenAndRedirect(token){
+        let error = false;
+        try {
+            sessionStorage.setItem("userToken", token);
+        } catch (e) {
+            alert("Error when writing to Session Storage " + e);
+            error = true;
+        } 
+        if (!error) { 
+            window.location = "html/index.html";
+        }
     }
 
     function getROTW() {
@@ -123,7 +94,7 @@
         } catch (e) {
             alert("Error when writing to Session Storage " + e);
             error = true;
-        } 
+        }
     }
 
     window.onload = setup;

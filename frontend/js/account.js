@@ -2,12 +2,11 @@
     "use strict";
 
     // CONSTANTS
-    const apiUrl = "https://college-cookbook-api.herokuapp.com/recipes/";
-    // const apiUrl = "http://localhost:3000/recipes/";
+    // const apiUrl = "https://college-cookbook-api.herokuapp.com/recipes/";
+    const apiUrl = "http://localhost:3000";
     let user = {};
-    // OTHER VARS
+    let userToken = null;
 
-    // called when the page first loads to create tiles and empty space 
     function setup() {
         const homeElement = document.getElementById("cookbookTitle");
         homeElement.onclick = home;
@@ -19,16 +18,17 @@
         favoriteRecipesElement.onclick = favoriteRecipe;
         const myAccountElement = document.getElementById("account");
         myAccountElement.onclick = myAccount;
-        // listOfMyFavoriteRecipes = document.getElementById("listOfMyFavoriteRecipes");
-
+        const myLogoutElement = document.getElementById("logout");
+        myLogoutElement.onclick = logout;
         loadUser();
+
 
     }
 
     function loadUser() {
-        let userToStoreString, error = false;
+        let error = false;
         try {
-            userToStoreString = sessionStorage.getItem("userToStore");
+            userToken = sessionStorage.getItem("userToken");
         } catch (e) {
             alert("Error when reading from Session Storage " + e);
             error = true;
@@ -36,60 +36,45 @@
             return false;
         }
         if (!error) {
-            user._id = userToStoreString;
-            getUser();
+            getUserByToken();
         }
     }
 
     function displayAccount() {
+        console.log("display");
         $('#userName').text(user.name);
         $('#userBio').text(user.bio);
         $('#userPic').attr("src", user.imageURL);
         const recipesContainer = $('#myFavoriteRecipeList');
-        let quote;
-        user.favoriteRecipes.forEach((recipe) => {
-            quote = $('<blockquote>').append(
-                '<p>' + '<h4>' + recipe.name + '</h4>' + '</p>' + 
-                '<p>' + '<span>' + ' Type of Meal: </span> ' + recipe.typeOfMeal + '</p>' +
-                '<p>' + '<span>' + 'Cost: ' + recipe.cost + '</span>' + '</p>' +
-                '<p>' + '<span>' + 'Serving Size: ' + recipe.servingSize + '</span>' + '</p>'
-            );
-            recipesContainer.append(quote);
-            quote.click( () => {
-                saveRecipeIdAndRedirect(recipe);
-            });
-        // $('#userPic').text(user.)
-    });
-}
-
-function saveRecipeIdAndRedirect(recipeToStore) {
-    let error = false;
-    try {
-        const recipeToStoreString = JSON.stringify(recipeToStore);
-        sessionStorage.setItem("recipeToStore", recipeToStoreString);
-    } catch (e) {
-        alert("Error when writing to Session Storage " + e);
-        error = true;
-    } 
-    if (!error) { 
-        console.log('redirect added recipe');
-        window.location = "recipe.html";
+        // let quote;
+        // user.favoriteRecipes.forEach((recipe) => {
+        //     quote = $('<blockquote>').append(
+        //         '<p>' + '<h4>' + recipe.name + '</h4>' + '</p>' + 
+        //         '<p>' + '<span>' + ' Type of Meal: </span> ' + recipe.typeOfMeal + '</p>' +
+        //         '<p>' + '<span>' + 'Cost: ' + recipe.cost + '</span>' + '</p>' +
+        //         '<p>' + '<span>' + 'Serving Size: ' + recipe.servingSize + '</span>' + '</p>'
+        //     );
+        //     recipesContainer.append(quote);
+        //     quote.click( () => {
+        //         saveRecipeIdAndRedirect(recipe);
+        //     });
+        // });
     }
-}
 
-
-  
-    function getUser() {
+    function getUserByToken() {
         $.ajax({
-            url: apiUrl + user._id,
+            url: apiUrl + "/auth/user",
+            headers: { 'x-access-token': userToken },
             type: 'GET',
-            dateType: 'JSON',
+            data: user,
+            dataType: 'JSON',
             success: (data) => {
                 if (data) {
                     user = data;
                     displayAccount();
+                    console.log(user);
                 } else {
-                    console.log('User Not Found.');
+                    console.log("User not Found");
                 }
             },
             error: (request, status, error) => {
@@ -115,6 +100,19 @@ function saveRecipeIdAndRedirect(recipeToStore) {
     }
     function myAccount() {
         window.location = "account.html";
+    }
+    function logout() {
+        $.ajax({
+            url: apiUrl + "/auth/logout",
+            type: 'GET',
+            dataType: 'JSON',
+            success: (data) => {
+                window.location = "../login.html";
+            },
+            error: (request, status, error) => {
+                console.log(error, status, request);
+            }
+        });
     }
 
     window.onload = setup;

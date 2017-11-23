@@ -2,8 +2,8 @@
     "use strict";
   
     // CONSTANTS
-    // const apiUrl = "http://localhost:3000";
-    const apiUrl = "https://college-cookbook-api.herokuapp.com";
+    const apiUrl = "http://localhost:3000";
+    // const apiUrl = "https://college-cookbook-api.herokuapp.com";
     
     // OTHER VARS
     let user={};
@@ -12,11 +12,9 @@
 function getUserInfo(){
     const userObject = {
         name: $('[name="name"]').val(),
-        imageURL: $('[name="addImage"]').val(),
         username:   $('[name="Username"]').val(),
         password:  $('[name="Password"]').val(),
-        email: $('[name="email"]').val(),
-        bio:  $('#bio').val()
+        email: $('[name="email"]').val()
     };
     return userObject;
     
@@ -29,37 +27,30 @@ function getUserInfo(){
     });
   }
 
-  function saveUserIDAndRedirect(userToStore) {
-    let error = false;
-    try {
-        console.log(userToStore._id);
-        const userToStoreString = userToStore._id;
-        sessionStorage.setItem("userToStore", userToStoreString);
-    } catch (e) {
-        alert("Error when writing to Session Storage " + e);
-        error = true;
-    } 
-    if (!error) { 
-        console.log('redirect added user');
-        window.location = "index.html";
+    function saveTokenAndRedirect(token){
+        let error = false;
+        try {
+            sessionStorage.setItem("userToken", token);
+        } catch (e) {
+            alert("Error when writing to Session Storage " + e);
+            error = true;
+        } 
+        if (!error) { 
+            window.location = "index.html";
+        }
     }
-}
 
   function CreateNewUser(user){
     $.ajax({
-        url: apiUrl + '/recipes',
+        url: apiUrl + '/auth/register',
         type: 'POST',
         data: user,
         dateType: 'JSON',
         success: (data) => {
-            console.log("in create new users"); 
-            if (data) {  
-                 
-                saveUserIDAndRedirect(data);
-            console.log("inside of create new user");
-            console.log(data);
+            if (data.auth) {  
+                saveTokenAndRedirect(data.token);
             } else {
-                console.log("Recipe not Found");
+                console.log("User not created");
             }
         },
         error: (request, status, error) => {
@@ -67,7 +58,6 @@ function getUserInfo(){
         }
     });
 }
-
 
    window.onload = clickOnRegisterButton;
 })();
